@@ -1,6 +1,6 @@
 # Bloghub - Your Personal Blogging Platform
 
-Bloghub is a web-based blogging platform that allows users to create and manage their own blogs, share their thoughts, and discover content from other users. It's built with PHP, MySQL, Bootstrap, and uses bcrypt for password encryption.
+Bloghub is a web-based blogging platform that allows users to create and manage their own blogs, share their thoughts, and discover content from other users. It's built with PHP, MySQL, Bootstrap, and uses Bcrypt for password encryption.
 
 ## Table of Contents
 
