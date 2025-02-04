@@ -53,11 +53,6 @@ Bloghub is built using the following technologies and tools:
 4. Explore the Discover page to find posts from other users.
 5. Stay tuned for upcoming features and updates!
 
-### Demo
-
-![2023-09-08-01-27-58-_online-video-cutter com_](https://github.com/farukkurtic/Bloghub/assets/34779712/58f5bdc7-0b69-45f0-9a00-987fa0868ecc)
-
-
 ## Future Plans
 
 We have exciting plans for the future of Bloghub:
@@ -65,8 +60,4 @@ We have exciting plans for the future of Bloghub:
 - **Redefined User Profiles**: Enhance user profiles with more customization options and statistics.
 - **Social Features**: Allow users to like, share, and comment on posts, fostering a sense of community.
 
-## Contact
 
-If you have any questions, suggestions, or issues, please feel free to contact me at [farukkurtic@gmail.com](mailto:farukkurtic@gmail.com).
-
-Happy Blogging!
