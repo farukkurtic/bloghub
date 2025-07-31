@@ -99,9 +99,6 @@ if(isset($_POST["submit"])) {
             </div>
             <button type="submit" class="btn btn-primary btn-lg" name="submit" value="submitted">Submit</button>
         </form>
-        <footer>
-            <p>&copy; 2023 Faruk Kurtić. All rights reserved.</p>
-        </footer>
     </div>
 </body>
 </html>
