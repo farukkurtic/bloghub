@@ -6,8 +6,7 @@ if(isset($_POST["submit"])) {
 
     $full_name = $email = $password = "";
     $full_name_err = $email_err = $password_err = $password_repeat_err = "";
-
-    // provjeravanje da li je ista prazno
+    
     if(empty($_POST["full_name"])) {
         $full_name_err = "Full Name can't be empty";
     };
@@ -24,7 +23,6 @@ if(isset($_POST["submit"])) {
         $password_repeat_err = "Password repeat can't be empty";
     };
 
-    // verifikacija maila
     $pattern = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
     if($email_err != "Email can't be empty") {
         if (!preg_match($pattern, $_POST["email"])) {
@@ -32,7 +30,6 @@ if(isset($_POST["submit"])) {
         }
     };
 
-    // verifikacija passworda
     $password_pattern = '/^(?=.*[0-9])(?=.*[^\w\s]).{8,}$/';
     if($password_err != "Password can't be empty") {
         if (!preg_match($password_pattern, $_POST["password"])) {
@@ -40,14 +37,12 @@ if(isset($_POST["submit"])) {
         }
     };
 
-    // passwordi se ne poklapaju
     if($password_err != "Password can't be empty" && $password_repeat_err != "Password repeat can't be empty") {
         if($_POST["password"] != $_POST["password_repeat"]) {
             $password_repeat_err = "Passwords do not match";
         }
     };
-
-    // dodavanje korisnika u bazu i provjeravanje da li vec postoji
+i
     if($full_name_err == "" && $email_err == "" && $password_err == "" && $password_repeat_err == "" ) {
 
         $full_name = filter_input(INPUT_POST, "full_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -70,10 +65,7 @@ if(isset($_POST["submit"])) {
         } else {
             $sql = "INSERT INTO `users` (`full_name`, `email`, `password`) VALUES ('$full_name', '$email', '$password_hash')";
             if(mysqli_query($connection, $sql)) {
-
-                // working
-
-                // izvlacenje svih podataka novog usera (uzima se iz baze)
+                
                 $session_query = "SELECT * FROM users WHERE email = '$email'";
                 $session_result = mysqli_query($connection, $session_query);
                 $row = mysqli_fetch_assoc($session_result);
@@ -85,8 +77,6 @@ if(isset($_POST["submit"])) {
                 header("Location: profile.php"); 
 
               } else {
-
-                // not working 
 
                 echo "error";
 
@@ -106,13 +96,10 @@ if(isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    <!-- Typed JS -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <title>Sign up</title>
@@ -120,7 +107,6 @@ if(isset($_POST["submit"])) {
 <body class="register-body">
 
     <div class="container-fluid">
-        <!-- navigacija -->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">BLOGHUB</a>
@@ -135,7 +121,6 @@ if(isset($_POST["submit"])) {
                 </div>
             </div>
         </nav>
-        <!-- forma za registraciju -->
         <div class="row text-row">
             <div class="col-lg-7">
                 <h1 class="text-heading">Sign up <br> today to <br><span id="typed"></span></h1>
@@ -182,10 +167,6 @@ if(isset($_POST["submit"])) {
                 </form>
             </div>
         </div>
-        <footer>
-            <p>&copy; 2023 Faruk Kurtić. All rights reserved.</p>
-        </footer>
-        <!-- modal za notifikacije -->
         <div class="modal fade" id="userExistsModal" tabindex="-1" role="dialog" aria-labelledby="userExistsModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -206,7 +187,6 @@ if(isset($_POST["submit"])) {
         </div>
     </div>
     <script>
-        // Typed
         var typed = new Typed('#typed', {
         strings: ['share', 'discover' ,'connect'],
         typeSpeed: 50,
