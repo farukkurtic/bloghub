@@ -1,6 +1,6 @@
 <?php
 
-define('DB_HOST', 'localhost'); // mijenja se u produkciji
+define('DB_HOST', 'localhost'); 
 define('DB_USER', 'faruk21');
 define('DB_PASSWORD', 'farukkurtic');
 define('DB_NAME', 'blogapp'); 
