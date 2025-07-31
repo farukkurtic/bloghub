@@ -71,10 +71,6 @@ $row = mysqli_fetch_assoc($post_result);
             ?>
 
         </div>
-        <!-- footer -->
-        <footer>
-            <p>&copy; 2023 Faruk Kurtić. All rights reserved.</p>
-        </footer>
     </div>
 </body>
 </html>
