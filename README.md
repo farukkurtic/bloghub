@@ -6,13 +6,8 @@ Bloghub is a web-based blogging platform that allows users to create and manage 
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Usage](#usage)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Usage](#usage-1)
-- [Demo](#demo)
-- [Future Plans](#future-plans)
-- [Contact](#contact)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
 
 
 ## Features
@@ -31,33 +26,14 @@ Bloghub is built using the following technologies and tools:
 - Bootstrap
 - bcrypt (for password encryption)
 
-## Usage
-
-### Prerequisites
+## Prerequisites
 
 - [XAMPP](https://www.apachefriends.org/index.html) installed on your local machine.
 
-### Installation
+## Installation
 
 1. Clone this repository: `https://github.com/farukkurtic/Bloghub.git`.
 2. Place the cloned directory into your XAMPP's `htdocs` folder (usually located at `C:\xampp\htdocs\` on Windows or `/Applications/XAMPP/htdocs/` on macOS).
 3. Start the Apache and MySQL services from your XAMPP control panel.
 4. Create the SQL database schema using phpMyAdmin (usually accessible at `http://localhost/phpmyadmin/`).
 5. Configure the database connection in `config.php` (located in the `config` directory) by providing your MySQL username, password, and database name.
-
-### Usage
-
-1. Open a web browser and navigate to `http://localhost/bloghub/` (assuming you placed the project in a folder named `bloghub` within `htdocs`).
-2. Register for an account on the platform.
-3. Create your own blog and start writing posts.
-4. Explore the Discover page to find posts from other users.
-5. Stay tuned for upcoming features and updates!
-
-## Future Plans
-
-We have exciting plans for the future of Bloghub:
-
-- **Redefined User Profiles**: Enhance user profiles with more customization options and statistics.
-- **Social Features**: Allow users to like, share, and comment on posts, fostering a sense of community.
-
-
