@@ -7,20 +7,15 @@ session_start();
 $old_post_title = $old_post_content = "";
 
 if (isset($_GET["post_id"])) {
-
     $post_id = $_GET["post_id"];
-
-    // izvlacenje stare objave
     $old_query = "SELECT * FROM posts WHERE post_id = ?";
     $old_statement = mysqli_prepare($connection, $old_query);
     mysqli_stmt_bind_param($old_statement, "i", $post_id);
     mysqli_stmt_execute($old_statement);
     $result = mysqli_stmt_get_result($old_statement);
     $row = mysqli_fetch_assoc($result);
-
     $old_post_title = $row['title'];
     $old_post_content = $row['post'];
-
 }
 
 if(isset($_POST["submit"])) {
@@ -62,13 +57,10 @@ if(isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/546f520f0b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <title>Profile</title>
@@ -90,7 +82,6 @@ if(isset($_POST["submit"])) {
                 </div>
             </div>
         </nav>
-        <!-- forma za editovanje objave -->
         <form action="<?php echo $_SERVER['PHP_SELF'] . '?post_id=' . $_GET['post_id']; ?>" method="POST" class="post-forma">
             <div class="mb-3">
                 <label for="titleEdit" class="form-label">Post Title</label>
@@ -108,7 +99,6 @@ if(isset($_POST["submit"])) {
             </div>
             <button type="submit" class="btn btn-primary btn-lg" name="submit" value="submitted">Submit</button>
         </form>
-        <!-- footer -->
         <footer>
             <p>&copy; 2023 Faruk Kurtić. All rights reserved.</p>
         </footer>
