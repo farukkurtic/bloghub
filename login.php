@@ -7,8 +7,6 @@ $email_err = $password_err = "";
 
 if(isset($_POST["submit"])) {
 
-    // provjeravanje da li je input prazan
-
     if(empty($_POST["email"])) {
         $email_err = "Email can't be empty";
     };
@@ -21,9 +19,6 @@ if(isset($_POST["submit"])) {
 
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-        // provjeravanje da li korisnik postoji u bazi (po email-u)
-
         $email_query = "SELECT * FROM users WHERE email = '$email'";
         $email_result = mysqli_query($connection, $email_query);
 
@@ -36,10 +31,9 @@ if(isset($_POST["submit"])) {
             });
           </script> ";
         } else {
-            $row = mysqli_fetch_assoc($email_result); // pronadjeni red (moze biti samo jedan zbog prethodne autentikacije)
+            $row = mysqli_fetch_assoc($email_result);
             $password_hash = $row["password"];
 
-            // provjeravanje creds-a
             if(password_verify($password, $password_hash)) {
                 session_start();
                 $_SESSION["name"] = $row["full_name"];
@@ -62,13 +56,10 @@ if(isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    <!-- Typed JS -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <title>Sign up</title>
@@ -76,7 +67,6 @@ if(isset($_POST["submit"])) {
 <body class="register-body">
 
     <div class="container-fluid">
-        <!-- navigacija -->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">BLOGHUB</a>
@@ -91,7 +81,6 @@ if(isset($_POST["submit"])) {
                 </div>
             </div>
         </nav>
-        <!-- forma za login -->
         <div class="row text-row">
             <div class="col-lg-7">
                 <h1 class="text-heading-login"><span class="heading-span">Welcome!</span>We're glad <br> to have you back.</h1>
@@ -123,10 +112,6 @@ if(isset($_POST["submit"])) {
                 </form>
             </div>
         </div>
-        <footer>
-            <p>&copy; 2023 Faruk Kurtić. All rights reserved.</p>
-        </footer>
-        <!-- modal za notifikacije -->
         <div class="modal fade" id="userExistsModal" tabindex="-1" role="dialog" aria-labelledby="userExistsModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
